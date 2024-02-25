@@ -2,7 +2,7 @@ import * as React from "react"
 import { type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/utils/tailwind.utils"
-import { badgeVariants } from "@/components/cva/badgeVariants"
+import { badgeVariants } from "@/components/cva"
 
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,

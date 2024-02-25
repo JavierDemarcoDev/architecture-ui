@@ -9,15 +9,11 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
-  label: string
   fullWidth?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    { className, variant, label, size, asChild = false, fullWidth, ...props },
-    ref,
-  ) => {
+  ({ className, variant, size, asChild = false, fullWidth, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button'
     const buttonClasses = cn(
       buttonVariants({
@@ -30,11 +26,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       },
     )
 
-    return (
-      <Comp className={buttonClasses} ref={ref} aria-label={label} {...props}>
-        {label}
-      </Comp>
-    )
+    return <Comp className={buttonClasses} ref={ref} {...props} />
   },
 )
 Button.displayName = 'Button'
