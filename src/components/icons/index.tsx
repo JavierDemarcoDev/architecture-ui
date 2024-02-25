@@ -1,3 +1,3 @@
-import * as Icons from "@radix-ui/react-icons";
+import * as Icons from '@radix-ui/react-icons'
 
-export default Icons;
+export default Icons

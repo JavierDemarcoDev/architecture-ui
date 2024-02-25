@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { AccordionDemo } from '.';
+import type { Meta, StoryObj } from '@storybook/react'
+import { AccordionDemo } from '.'
 
 const meta = {
   title: 'Demos/Accordion',
@@ -7,11 +7,11 @@ const meta = {
   parameters: {},
   tags: ['autodocs'],
   argTypes: {},
-} satisfies Meta<typeof AccordionDemo>;
+} satisfies Meta<typeof AccordionDemo>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 export const Demo: Story = {
   args: {},
-};
+}

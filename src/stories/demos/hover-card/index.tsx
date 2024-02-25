@@ -1,16 +1,12 @@
-import { CalendarDays } from "lucide-react"
+import { CalendarDays } from 'lucide-react'
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/ui/hover-card"
+} from '@/components/ui/hover-card'
 
 export function HoverCardDemo() {
   return (
@@ -30,7 +26,7 @@ export function HoverCardDemo() {
               The React Framework – created and maintained by @vercel.
             </p>
             <div className="flex items-center pt-2">
-              <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{' '}
               <span className="text-xs text-muted-foreground">
                 Joined December 2021
               </span>
