@@ -4,8 +4,7 @@ import { SliderDemo } from '.'
 const meta = {
   title: 'Demos/Slider',
   component: SliderDemo,
-  parameters: {
-  },
+  parameters: {},
   tags: ['autodocs'],
   argTypes: {},
 } satisfies Meta<typeof SliderDemo>
