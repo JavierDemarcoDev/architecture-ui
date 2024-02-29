@@ -5,7 +5,6 @@ const meta = {
   title: 'Demos/Slider',
   component: SliderDemo,
   parameters: {
-    layout: 'centered',
   },
   tags: ['autodocs'],
   argTypes: {},
