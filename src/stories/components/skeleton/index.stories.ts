@@ -5,7 +5,6 @@ const meta = {
   title: 'Components/Skeleton',
   component: SkeletonDemo,
   parameters: {},
-  tags: ['autodocs'],
   argTypes: {},
 } satisfies Meta<typeof SkeletonDemo>
 

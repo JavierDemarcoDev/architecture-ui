@@ -5,7 +5,6 @@ const meta = {
   title: 'Components/Progress',
   component: ProgressDemo,
   parameters: {},
-  tags: ['autodocs'],
   argTypes: {},
 } satisfies Meta<typeof ProgressDemo>
 

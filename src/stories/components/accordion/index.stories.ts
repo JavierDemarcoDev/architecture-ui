@@ -5,7 +5,6 @@ const meta = {
   title: 'Components/Accordion',
   component: AccordionDemo,
   parameters: {},
-  tags: ['autodocs'],
   argTypes: {},
 } satisfies Meta<typeof AccordionDemo>
 

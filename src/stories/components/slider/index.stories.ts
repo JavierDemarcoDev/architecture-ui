@@ -5,7 +5,6 @@ const meta = {
   title: 'Components/Slider',
   component: SliderDemo,
   parameters: {},
-  tags: ['autodocs'],
   argTypes: {},
 } satisfies Meta<typeof SliderDemo>
 

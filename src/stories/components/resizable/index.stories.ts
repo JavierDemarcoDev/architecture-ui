@@ -5,7 +5,6 @@ const meta = {
   title: 'Components/Resizable',
   component: ResizableDemo,
   parameters: {},
-  tags: ['autodocs'],
   argTypes: {},
 } satisfies Meta<typeof ResizableDemo>
 

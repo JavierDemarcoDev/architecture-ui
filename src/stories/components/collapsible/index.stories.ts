@@ -5,7 +5,7 @@ const meta = {
   title: 'Components/Collapsible',
   component: CollapsibleDemo,
   parameters: {},
-  tags: ['autodocs'],
+
   argTypes: {},
 } satisfies Meta<typeof CollapsibleDemo>
 

@@ -5,7 +5,7 @@ const meta = {
   title: 'Components/Alert',
   component: AlertDemo,
   parameters: {},
-  tags: ['autodocs'],
+
   argTypes: {},
 } satisfies Meta<typeof AlertDemo>
 

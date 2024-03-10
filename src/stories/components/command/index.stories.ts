@@ -5,7 +5,7 @@ const meta = {
   title: 'Components/Command',
   component: CommandDemo,
   parameters: {},
-  tags: ['autodocs'],
+
   argTypes: {},
 } satisfies Meta<typeof CommandDemo>
 
