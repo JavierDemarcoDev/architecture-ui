@@ -3,8 +3,7 @@
 > Este proyecto se utilizara como capa superior para negocio de front utilizando componentes personalizados de la libreria Shadcn
 
 # Chromatic Server
-
-[![](https://www.chromatic.com/docs/_astro/workflow-publish.8OxWBJDQ_1ycnpj.webp)](https://www.chromatic.com/builds?appId=65e0f252193df19b8c822c42)
+[![image](https://github.com/mesa-chica/mesa-shadcn/assets/145062954/65da3dd3-3ed3-4e7b-8ffc-a8657313b352)](https://www.chromatic.com/builds?appId=65e0f252193df19b8c822c42)
 
 # Shadcn Web
 
