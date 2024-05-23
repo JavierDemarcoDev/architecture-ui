@@ -1,6 +1,5 @@
 {
   "name": "architecture-ui",
-  "private": false,
   "version": "0.0.0",
   "type": "module",
   "publishConfig": {
