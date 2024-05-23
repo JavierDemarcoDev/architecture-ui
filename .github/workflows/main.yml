@@ -9,15 +9,18 @@ jobs:
   publish-gpr:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
           node-version: '14'
 
-      - name: Configure npm for GitHub Packages
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.MESA_SHADCN_ACCESS_TOKEN }}" > ~/.npmrc
+      - name: Configure git
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
 
       - name: Install dependencies
         run: npm install
@@ -30,11 +33,14 @@ jobs:
 
       - name: Commit version increment
         run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
           git add package.json package-lock.json
           git commit -m "Increment version to $NEW_VERSION"
-          git push
+
+      - name: Push changes
+        run: git push
+
+      - name: Configure npm for GitHub Packages
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.MESA_SHADCN_ACCESS_TOKEN }}" > ~/.npmrc
 
       - name: Publish to GitHub Packages
         run: npm publish --access restricted
