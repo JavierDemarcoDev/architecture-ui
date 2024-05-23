@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@mesa-chica"
+  },
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "storybook build",
