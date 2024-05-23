@@ -10,12 +10,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
         with:
           node-version: '14'
-      - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.MESA_SHADCN_ACCESS_TOKEN }}" > ~/.npmrc
-      - run: npm install
-      - run: npm publish --access restricted
+
+      - name: Configure npm for GitHub Packages
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.MESA_SHADCN_ACCESS_TOKEN }}" > ~/.npmrc
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Increment version
+        run: |
+          CURRENT_VERSION=$(npm pkg get version | tr -d '"')
+          NEW_VERSION=$(echo $CURRENT_VERSION | awk -F. '{OFS="."; $3+=1; print}')
+          npm version $NEW_VERSION --no-git-tag-version
+
+      - name: Commit version increment
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add package.json
+          git commit -m "Increment version to $NEW_VERSION"
+          git push
+
+      - name: Publish to GitHub Packages
+        run: npm publish --access restricted
         env:
           NODE_AUTH_TOKEN: ${{ secrets.MESA_SHADCN_ACCESS_TOKEN }}
 
@@ -24,11 +46,22 @@ jobs:
     needs: publish-gpr
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
         with:
-          node-version: '14' # Cambiar si es necesario
-      - run: mkdir test-project
-      - run: cd test-project && npm init -y
-      - run: cd test-project && echo "@mesa-chica:registry=https://npm.pkg.github.com/" > ~/.npmrc
-      - run: cd test-project && echo "//npm.pkg.github.com/:_authToken=${{ secrets.MESA_SHADCN_ACCESS_TOKEN }}" >> ~/.npmrc
-      - run: cd test-project && npm install @mesa-chica/architecture-ui
+          node-version: '14'
+
+      - name: Create test project
+        run: mkdir test-project
+
+      - name: Initialize test project
+        run: cd test-project && npm init -y
+
+      - name: Configure npm for GitHub Packages in test project
+        run: |
+          echo "@mesa-chica:registry=https://npm.pkg.github.com/" > ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.MESA_SHADCN_ACCESS_TOKEN }}" >> ~/.npmrc
+
+      - name: Install published package
+        run: cd test-project && npm install @mesa-chica/architecture-ui
