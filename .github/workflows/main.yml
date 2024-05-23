@@ -10,12 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
+      
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
           node-version: '14'
-
       - name: Configure npm for GitHub Packages
         run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.MESA_SHADCN_ACCESS_TOKEN }}" > ~/.npmrc
 
@@ -28,18 +27,15 @@ jobs:
           NEW_VERSION=$(echo $CURRENT_VERSION | awk -F. '{OFS="."; $3+=1; print}')
           npm version $NEW_VERSION --no-git-tag-version
 
-      - name: Commit version increment
+      - name: Commit version increment and publish
         run: |
           git config --global user.name 'JavierDemarcoDev'
           git config --global user.email 'demarco.jvr@gmail.com'
           git add package.json package-lock.json
           git commit -m "Increment version to $NEW_VERSION"
-          git push
-
-      - name: Publish to GitHub Packages
-        run: npm publish --access restricted
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.MESA_SHADCN_ACCESS_TOKEN }}
+          git remote set-url origin https://${{ secrets.MESA_SHADCN_ACCESS_TOKEN }}@github.com/mesa-chica/mesa-shadcn.git
+          echo "NODE_AUTH_TOKEN=${{ secrets.MESA_SHADCN_ACCESS_TOKEN }}" >> $GITHUB_ENV
+          npm publish --access restricted
 
   test-install:
     runs-on: ubuntu-latest
