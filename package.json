@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "dev": "storybook dev -p 6006",
