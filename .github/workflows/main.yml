@@ -19,14 +19,16 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.MESA_SHADCN_ACCESS_TOKEN }}
 
-  install-package:
+  test-install:
     runs-on: ubuntu-latest
     needs: publish-gpr
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: '14'
-      - run: echo "@mesa-chica:registry=https://npm.pkg.github.com/" > ~/.npmrc
-      - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.MESA_SHADCN_ACCESS_TOKEN }}" >> ~/.npmrc
-      - run: npm install @mesa-chica/architecture-ui
+          node-version: '14' # Cambiar si es necesario
+      - run: mkdir test-project
+      - run: cd test-project && npm init -y
+      - run: cd test-project && echo "@mesa-chica:registry=https://npm.pkg.github.com/" > ~/.npmrc
+      - run: cd test-project && echo "//npm.pkg.github.com/:_authToken=${{ secrets.MESA_SHADCN_ACCESS_TOKEN }}" >> ~/.npmrc
+      - run: cd test-project && npm install @mesa-chica/architecture-ui
