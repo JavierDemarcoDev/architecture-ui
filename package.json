@@ -1,7 +1,9 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@mesa-chica/architecture-ui-next",
+  "version": "0.0.1",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "dev": "storybook dev -p 6006",
     "lint": "next lint",

@@ -1,4 +1,4 @@
-name: mesa-chica/architecture-ui/next
+name: mesa-chica/architecture-ui-next
 
 on:
   push:
