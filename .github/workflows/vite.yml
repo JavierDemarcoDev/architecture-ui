@@ -1,9 +1,9 @@
-name: mesa-chica/architecture-ui
+name: mesa-chica/architecture-ui-vite
 
 on:
   push:
     branches:
-      - main
+      - vite
 
 jobs:
   publish-gpr:
