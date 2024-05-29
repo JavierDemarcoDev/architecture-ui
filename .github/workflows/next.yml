@@ -1,0 +1,20 @@
+name: mesa-chica/architecture-ui/next
+
+on:
+  push:
+    branches:
+      - next
+
+jobs:
+  publish-gpr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.MESA_SHADCN_ACCESS_TOKEN }}" > ~/.npmrc
+      - run: npm install --no-package-lock
+      - run: npm publish --access restricted --no-package-lock
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.MESA_SHADCN_ACCESS_TOKEN }}
