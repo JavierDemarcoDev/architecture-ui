@@ -5,7 +5,7 @@ import { cn } from "@/utils/tailwind.utils";
 
 const fontSans = FontSans({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-geist-sans",
 })
 
 export const metadata: Metadata = {
@@ -26,7 +26,9 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        {children}
+        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+          {children}
+        </main>
       </body>
     </html>
   );
